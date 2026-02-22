@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="light">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -88,46 +88,47 @@
                 <p class="text-slate-500 dark:text-slate-400">Our cross-functional leadership team (and singular human).</p>
             </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+            <!-- Use grid-cols-3 at all times, reduce gap for mobile -->
+            <div class="grid grid-cols-3 gap-3 sm:gap-6 md:gap-12 max-w-5xl mx-auto">
                 <!-- CMO - Left -->
                 <div class="group">
-                    <div class="relative overflow-hidden rounded-2xl mb-6 bg-slate-200 dark:bg-slate-800 aspect-square border border-slate-200 dark:border-slate-800 shadow-lg">
+                    <div class="relative overflow-hidden rounded-xl md:rounded-2xl mb-4 md:mb-6 bg-slate-200 dark:bg-slate-800 aspect-square border border-slate-200 dark:border-slate-800 shadow-lg">
                         <img src="https://www.iottechexpo.com/europe/wp-content/uploads/2019/03/Alejandro-Saucedo.png" 
                              alt="CMO" 
                              class="w-full h-full object-cover grayscale scale-x-[-1] group-hover:scale-x-[-1.05] group-hover:scale-y-[1.05] transition-transform duration-500">
                     </div>
                     <div class="text-center">
-                        <h3 class="text-2xl font-bold">CMO</h3>
-                        <p class="text-indigo-600 font-medium">Chief Meme Officer</p>
-                        <p class="mt-2 text-slate-500 dark:text-slate-400 text-sm italic">"If it's not a GIF, it's not marketing."</p>
+                        <h3 class="text-lg md:text-2xl font-bold">CMO</h3>
+                        <p class="text-indigo-600 font-medium text-xs md:text-base">Chief Meme Officer</p>
+                        <p class="mt-2 text-slate-500 dark:text-slate-400 text-[10px] md:text-sm italic leading-tight">"If it's not a GIF, it's not marketing."</p>
                     </div>
                 </div>
 
                 <!-- CEO - Middle -->
                 <div class="group">
-                    <div class="relative overflow-hidden rounded-2xl mb-6 bg-slate-200 dark:bg-slate-800 aspect-square border border-slate-200 dark:border-slate-800 shadow-lg">
+                    <div class="relative overflow-hidden rounded-xl md:rounded-2xl mb-4 md:mb-6 bg-slate-200 dark:bg-slate-800 aspect-square border border-slate-200 dark:border-slate-800 shadow-lg">
                         <img src="https://media.licdn.com/dms/image/v2/D4E03AQFnLHnC51IgFw/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1721631552115?e=1773273600&v=beta&t=1hFPZGVU-WYc16zHFCql3CqpLix7mJMuVxZ-gDimjCM" 
                              alt="CEO" 
                              class="w-full h-full object-cover lo-fi-filter group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="text-center">
-                        <h3 class="text-2xl font-bold">CEO</h3>
-                        <p class="text-indigo-600 font-medium">Chief Everything Officer</p>
-                        <p class="mt-2 text-slate-500 dark:text-slate-400 text-sm italic">"I also handle the Wi-Fi password."</p>
+                        <h3 class="text-lg md:text-2xl font-bold">CEO</h3>
+                        <p class="text-indigo-600 font-medium text-xs md:text-base">Chief Everything Officer</p>
+                        <p class="mt-2 text-slate-500 dark:text-slate-400 text-[10px] md:text-sm italic leading-tight">"I also handle the Wi-Fi password."</p>
                     </div>
                 </div>
 
                 <!-- CCO - Right -->
                 <div class="group">
-                    <div class="relative overflow-hidden rounded-2xl mb-6 bg-slate-200 dark:bg-slate-800 aspect-square border border-slate-200 dark:border-slate-800 shadow-lg">
+                    <div class="relative overflow-hidden rounded-xl md:rounded-2xl mb-4 md:mb-6 bg-slate-200 dark:bg-slate-800 aspect-square border border-slate-200 dark:border-slate-800 shadow-lg">
                         <img src="https://ep2018.europython.eu/media/conference/profile/alejandro-saucedo.jpg" 
                              alt="CCO" 
                              class="w-full h-full object-cover grayscale group-hover:scale-105 transition-transform duration-500">
                     </div>
                     <div class="text-center">
-                        <h3 class="text-2xl font-bold">CCO</h3>
-                        <p class="text-indigo-600 font-medium">Chief Chaos Officer</p>
-                        <p class="mt-2 text-slate-500 dark:text-slate-400 text-sm italic">"Optimizing for maximum entropy."</p>
+                        <h3 class="text-lg md:text-2xl font-bold">CCO</h3>
+                        <p class="text-indigo-600 font-medium text-xs md:text-base">Chief Chaos Officer</p>
+                        <p class="mt-2 text-slate-500 dark:text-slate-400 text-[10px] md:text-sm italic leading-tight">"Optimizing for maximum entropy."</p>
                     </div>
                 </div>
             </div>
@@ -171,12 +172,14 @@
         const htmlElement = document.documentElement;
 
         const updateTheme = () => {
-            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                htmlElement.classList.add('dark');
-                htmlElement.classList.remove('light');
-            } else {
+            // Default to dark if no preference is set
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
                 htmlElement.classList.remove('dark');
                 htmlElement.classList.add('light');
+            } else {
+                htmlElement.classList.add('dark');
+                htmlElement.classList.remove('light');
             }
         };
 
